@@ -12,6 +12,8 @@ app.get('/health', (req, res) => {
   res.json({ message: 'Alive.' });
 });
 
+require('./src/routes/player.routes')(app);
+
 app.listen(3000, () => console.log('Server is listening on port 3000'));
 
 module.exports = app;
