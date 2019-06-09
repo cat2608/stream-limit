@@ -15,10 +15,10 @@ describe('Extract authentication from request', () => {
   });
 
   it('should get user authentication url', () => {
-    const token = 'L3CjthiJrg2DDTIiKTmkYbvSrr64Ss6y7yQ5Yrwl';
+    const token = 'eyJlbWFpbCI6ImFubmFAbWFpbC5jb20ifQ==';
     req.query = { token };
     const auth = reqHeader.extractAuth(req);
-    expect(auth).to.equal(token);
+    expect(auth.email).to.equal('anna@mail.com');
   });
 
   it('should return null when token not present', () => {
