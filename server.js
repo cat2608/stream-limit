@@ -16,6 +16,7 @@ app.get('/health', (req, res) => {
 });
 
 require('./src/routes/player.routes')(app);
+require('./src/routes/user.routes')(app);
 
 app.listen(PORT, () => pino.info(
   { endpoint: `http://127.0.0.1:${PORT}` },
