@@ -21,7 +21,7 @@ const update = (params) => {
 
     // simulate an error
     if (user instanceof Error) {
-      reject();
+      reject(user);
     }
     resolve(user);
   });

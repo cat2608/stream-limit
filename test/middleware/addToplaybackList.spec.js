@@ -8,7 +8,7 @@ chai.use(sinonChai);
 
 const addToPlaybackList = require('../../src/middleware/addToPlaybackList.middleware');
 const User = require('../../src/model/user.model');
-const reqHeader = require('../../src/middleware/reqHeader');
+const reqHeader = require('../../src/middleware/utils/reqHeader');
 
 describe('Add clip to user\'s playback list', () => {
   const updateUser = sinon.stub(User, 'update');

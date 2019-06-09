@@ -1,4 +1,4 @@
-const isValidPayload = require('./validatePayload');
+const isValidPayload = require('./utils/validatePayload');
 
 const isPlaylistLimit = (req, res, next) => {
   const { auth } = res.locals;

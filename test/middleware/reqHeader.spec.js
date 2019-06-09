@@ -1,6 +1,6 @@
 const { expect } = require('chai');
 
-const reqHeader = require('../../src/middleware/reqHeader');
+const reqHeader = require('../../src/middleware/utils/reqHeader');
 
 describe('Extract authentication from request', () => {
   let req = {};

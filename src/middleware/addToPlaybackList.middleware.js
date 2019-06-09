@@ -1,6 +1,6 @@
 const User = require('../model/user.model');
-const isValidPayload = require('./validatePayload');
-const reqHeader = require('./reqHeader');
+const isValidPayload = require('./utils/validatePayload');
+const reqHeader = require('./utils/reqHeader');
 
 const addToPlaybackList = async (req, res, next) => {
   const authorization = reqHeader.extractAuth(req);
@@ -13,6 +13,7 @@ const addToPlaybackList = async (req, res, next) => {
   try {
     user = await User.update(authorization);
   } catch (error) {
+    req.log.error(error);
     return res.status(500).send({ message: 'Error updating user connections.' });
   }
   res.locals.auth = { ...user };

@@ -1,6 +1,6 @@
 const { expect } = require('chai');
 
-const isValidPayload = require('../../src/middleware/validatePayload');
+const isValidPayload = require('../../src/middleware/utils/validatePayload');
 
 describe('Validate params from token', () => {
   it('it should validate required params are present', () => {
