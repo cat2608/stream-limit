@@ -9,7 +9,7 @@ const extractAuth = (req) => {
     const [, b64Token] = authorization.split(' ');
     return parseToJson(b64Token);
   } else if (req.query && req.query.token) {
-    return req.query.token;
+    return parseToJson(req.query.token);
   }
   return null;
 };
