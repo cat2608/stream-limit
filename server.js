@@ -1,12 +1,15 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const pino = require('express-pino-logger')({ level: 'debug' });
+const pino = require('pino')();
+const expressPino = require('express-pino-logger')({ level: process.env.LOG_LEVEL || 'info' });
 
 const app = express();
 
+const PORT = 3000;
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(pino);
+app.use(expressPino);
 
 app.get('/health', (req, res) => {
   res.json({ message: 'Alive.' });
@@ -14,6 +17,9 @@ app.get('/health', (req, res) => {
 
 require('./src/routes/player.routes')(app);
 
-app.listen(3000, () => console.log('Server is listening on port 3000'));
+app.listen(PORT, () => pino.info(
+  { endpoint: `http://127.0.0.1:${PORT}` },
+  `Server is running on port ${PORT}`,
+));
 
 module.exports = app;
