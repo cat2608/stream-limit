@@ -11,7 +11,7 @@ const addToPlaybackList = async (req, res, next) => {
 
   let user = {};
   try {
-    user = await User.update(authorization);
+    user = await User.update({ authorization, openConnections: 1 });
   } catch (error) {
     req.log.error(error);
     return res.status(500).send({ message: 'Error updating user connections.' });

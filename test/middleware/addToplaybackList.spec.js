@@ -14,12 +14,12 @@ describe('Add clip to user\'s playback list', () => {
   const updateUser = sinon.stub(User, 'update');
   const extractAuth = sinon.stub(reqHeader, 'extractAuth');
 
-  beforeEach(() => {
+  before(() => {
     extractAuth.onFirstCall().returns({ email: 'john@mail.com' });
     updateUser.onFirstCall().returns({ email: 'anna@mail.com', openConnections: 2 });
   });
 
-  afterEach(() => {
+  after(() => {
     updateUser.restore();
     extractAuth.restore();
   });

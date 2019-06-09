@@ -14,9 +14,9 @@ const update = (params) => {
   return new Promise((resolve, reject) => {
     let user = find(params);
     if (!user) {
-      user = create({ ...params, openConnections: 1 });
+      user = create(params);
     } else {
-      user.openConnections += 1;
+      user.openConnections += params.openConnections;
     }
 
     // simulate an error
